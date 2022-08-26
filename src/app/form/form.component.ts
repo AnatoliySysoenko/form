@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { User } from '../user';
-import { emailValidator, rangeValidator } from '../custom-validators';
+import { emailValidator, observableUrlValidator, rangeValidator } from '../custom-validators';
 import {
   FORM_ERRORS,
   FORM_LABELS,
@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
   validationMessages: any = FORM_VALIDATION_MESSAGES;
   roles: string[] = FORM_ROLES;
   userForm!: FormGroup;
-  user: User = new User(1, null, null, null, null, null,);
+  user: User = new User(1, null, null, null, null, null, null);
 
   constructor(private fb: FormBuilder) { }
 
@@ -61,6 +61,7 @@ export class FormComponent implements OnInit {
       name: [this.user.name, [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
       password: [this.user.password, [Validators.required, Validators.minLength(7), Validators.maxLength(25)]],
       email: [this.user.email, [Validators.required, emailValidator]],
+      site: [this.user.email, [Validators.required], [observableUrlValidator]],
       age: [this.user.age, [Validators.required, rangeValidator(1, 122)]],
       role: [this.user.age, [Validators.required]],
     });

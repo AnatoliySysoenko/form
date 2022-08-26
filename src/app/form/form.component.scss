@@ -1,7 +1,12 @@
-.ng-valid {
-  border-bottom: 4px solid green !important;
+.text-muted {
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  position: relative;
 }
 
-.ng-invalid {
-  border-bottom: 4px solid red !important;
+.loader {
+  height: 30px;
+  position: absolute;
+  right: 0;
+  transform: translate(-20%, calc(-100% - 8px));
 }
